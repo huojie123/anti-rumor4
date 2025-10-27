@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>凝聚辟谣力量 共护网络清朗 - 互联网辟谣宣传专题</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif;
+        }
+        
+        :root {
+            --primary: #1a6dba;
+            --primary-dark: #0a4a8f;
+            --secondary: #ff6b6b;
+            --accent: #ffde59;
+            --light: #f5f7fa;
+            --dark: #333;
+            --success: #28a745;
+            --warning: #ffc107;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* 头部区域 */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+            z-index: 0;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .logo {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: var(--primary);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        h1 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* 导航 */
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            background: white;
+            border-radius: 50px;
+            padding: 10px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-tab {
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            flex: 1;
+            max-width: 200px;
+        }
+        
+        .nav-tab.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .nav-tab:not(.active):hover {
+            background: var(--light);
+        }
+        
+        /* 内容区域 */
+        .content-section {
+            display: none;
+        }
+        
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* 漫画区域 */
+        .comic-scene {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .scene-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px dashed var(--primary);
+        }
+        
+        .scene-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            margin-right: 15px;
+        }
+        
+        .scene-title {
+            font-size: 22px;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        /* 漫画面板 */
+        .comic-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .panel-row {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        
+        @media (max-width: 768px) {
+            .panel-row {
+                flex-direction: column;
+            }
+        }
+        
+        .character {
+            flex: 0 0 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .character-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin-bottom: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .character-avatar.rumor {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .character-avatar.truth {
+            background: var(--success);
+            color: white;
+        }
+        
+        .character-avatar.expert {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .character-name {
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            background: var(--light);
+            padding: 3px 10px;
+            border-radius: 15px;
+        }
+        
+        .dialogue {
+            flex: 1;
+            position: relative;
+            padding: 15px;
+            border-radius: 15px;
+            margin-top: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dialogue.rumor {
+            background: #fff5f5;
+            border: 2px solid #ffb8b8;
+        }
+        
+        .dialogue.truth {
+            background: #f0fff4;
+            border: 2px solid #9ae6b4;
+        }
+        
+        .dialogue.expert {
+            background: #e6f2ff;
+            border: 2px solid #a8d0ff;
+        }
+        
+        .dialogue::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+        }
+        
+        .dialogue.rumor::before {
+            left: 20px;
+            border-bottom: 10px solid #ffb8b8;
+        }
+        
+        .dialogue.truth::before {
+            right: 20px;
+            border-bottom: 10px solid #9ae6b4;
+        }
+        
+        .dialogue.expert::before {
+            left: 50%;
+            transform: translateX(-50%);
+            border-bottom: 10px solid #a8d0ff;
+        }
+        
+        .dialogue-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .dialogue-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .dialogue-title.rumor {
+            color: #e53e3e;
+        }
+        
+        .dialogue-title.truth {
+            color: #2d7d46;
+        }
+        
+        .dialogue-title.expert {
+            color: var(--primary);
+        }
+        
+        /* 辟谣提示 */
+        .tips-section {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+        
+        .tips-title {
+            font-size: 24px;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .tip-card {
+            background: var(--light);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        
+        .tip-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tip-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+        }
+        
+        .tip-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        /* 行动号召 */
+        .action-section {
+            text-align: center;
+            padding: 30px 20px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            margin: 30px 0;
+        }
+        
+        .action-title {
+            font-size: 24px;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-secondary {
+            background: var(--accent);
+            color: var(--dark);
+        }
+        
+        .btn-secondary:hover {
+            background: #e6c84d;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn i {
+            margin-right: 8px;
+        }
+        
+        /* 页脚 */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .footer-logo-icon {
+            width: 30px;
+            height: 30px;
+            background: white;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        /* 动画效果 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+        
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+        
+        .hot-tag {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ff4757;
+            color: white;
+            font-size: 12px;
+            padding: 3px 8px;
+            border-radius: 10px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        /* 指南页面样式 */
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .guide-card {
+            background: var(--light);
+            border-radius: 15px;
+            padding: 20px;
+        }
+        
+        .guide-card h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .guide-card h3 i {
+            margin-right: 10px;
+        }
+        
+        .guide-card ul {
+            padding-left: 20px;
+        }
+        
+        .guide-card li {
+            margin-bottom: 8px;
+        }
+        
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+            background: var(--accent);
+            color: var(--dark);
+            margin-top: 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .back-btn:hover {
+            background: #e6c84d;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .back-btn i {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部区域 -->
+        <header>
+            <div class="header-bg"></div>
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h1>凝聚辟谣力量 共护网络清朗</h1>
+                <p class="subtitle">互联网辟谣宣传专题 · 聚焦热点谣言 传播科学真相</p>
+            </div>
+        </header>
+        
+        <!-- 导航 -->
+        <div class="nav-tabs">
+            <div class="nav-tab active" data-target="home">首页</div>
+            <div class="nav-tab" data-target="tips">辟谣指南</div>
+            <div class="nav-tab" data-target="action">辟谣行动</div>
+        </div>
+        
+        <!-- 首页内容 -->
+        <div id="home" class="content-section active">
+            <!-- 漫画区域 -->
+            <div class="comic-container">
+                <!-- AI与科技类谣言 -->
+                <section class="comic-scene animate">
+                    <div class="scene-header">
+                        <div class="scene-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h2 class="scene-title">AI与科技类热门谣言</h2>
+                    </div>
+                    
+                    <div class="comic-panel">
+                        <div class="panel-row">
+                            <div class="character">
+                                <div class="character-avatar rumor">
+                                    <i class="fas fa-times"></i>
+                                    <div class="hot-tag">热</div>
+                                </div>
+                                <div class="character-name">谣言</div>
+                            </div>
+                            <div class="dialogue rumor">
+                                <div class="dialogue-content">
+                                    <div class="dialogue-title rumor">
+                                        <i class="fas fa-exclamation-triangle"></i> 谣言：
+                                    </div>
+                                    <p>"AI将取代80%的工作岗位，大量人员将失业"</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="panel-row">
+                            <div class="character">
+                                <div class="character-avatar truth">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div class="character-name">真相</div>
+                            </div>
+                            <div class="dialogue truth">
+                                <div class="dialogue-content">
+                                    <div class="dialogue-title truth">
+                                        <i class="fas fa-check-circle"></i> 真相：
+                                    </div>
+                                    <p>AI确实会改变工作方式，但更多是辅助人类工作而非完全取代。历史表明，技术革命会淘汰一些岗位，但同时创造更多新岗位。</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="panel-row">
+                            <div class="character">
+                                <div class="character-avatar expert">
+                                    <i class="fas fa-user-tie"></i>
+                                </div>
+                                <div class="character-name">科技专家</div>
+                            </div>
+                            <div class="dialogue expert">
+                                <div class="dialogue-content">
+                                    <div class="dialogue-title expert">
+                                        <i class="fas fa-lightbulb"></i> 专家提示：
+                                    </div>
+                                    <p>与其担心被AI取代，不如主动学习新技能。未来需要的是人机协作能力，AI无法替代人类的创造力、情感智慧和批判性思维。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- 健康与医疗类谣言 -->
+                <section class="comic-scene animate delay-1">
+                    <div class="scene-header">
+                        <div class="scene-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h2 class="scene-title">健康与医疗类热门谣言</h2>
+                    </div>
+                    
+                    <div class="comic-panel">
+                        <div class="panel-row">
+                            <div class="character">
+                                <div class="character-avatar rumor">
+                                    <i class="fas fa-times"></i>
+                                    <div class="hot-tag">热</div>
+                                </div>
+                                <div class="character-name">谣言</div>
+                            </div>
+                            <div class="dialogue rumor">
+                                <div class="dialogue-content">
+                                    <div class="dialogue-title rumor">
+                                        <i class="fas fa-exclamation-triangle"></i> 谣言：
+                                    </div>
+                                    <p>"某种'超级食物'可以治愈癌症/糖尿病等重大疾病"</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="panel-row">
+                            <div class="character">
+                                <div class="character-avatar truth">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div class="character-name">真相</div>
+                            </div>
+                            <div class="dialogue truth">
+                                <div class="dialogue-content">
+                                    <div class="dialogue-title truth">
+                                        <i class="fas fa-check-circle"></i> 真相：
+                                    </div>
+                                    <p>目前没有任何单一食物能够治愈重大疾病。均衡饮食、适当运动和正规医疗才是保持健康和治疗疾病的正确途径。</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="panel-row">
+                            <div class="character">
+                                <div class="character-avatar expert">
+                                    <i class="fas fa-user-md"></i>
+                                </div>
+                                <div class="character-name">医学专家</div>
+                            </div>
+                            <div class="dialogue expert">
+                                <div class="dialogue-content">
+                                    <div class="dialogue-title expert">
+                                        <i class="fas fa-lightbulb"></i> 专家提示：
+                                    </div>
+                                    <p>警惕任何声称能"根治"慢性病或癌症的"神奇"食物或保健品。如有健康问题，请务必咨询专业医生，遵循科学治疗方案。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+    
+	<!-- 经济与金融类谣言 -->
+            <section class="comic-scene animate delay-2">
+                <div class="scene-header">
+                    <div class="scene-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h2 class="scene-title">经济与金融类热门谣言</h2>
+                </div>
+                
+                <div class="comic-panel">
+                    <div class="panel-row">
+                        <div class="character">
+                            <div class="character-avatar rumor">
+                                <i class="fas fa-times"></i>
+                                <div class="hot-tag">热</div>
+                            </div>
+                            <div class="character-name">谣言</div>
+                        </div>
+                        <div class="dialogue rumor">
+                            <div class="dialogue-content">
+                                <div class="dialogue-title rumor">
+                                    <i class="fas fa-exclamation-triangle"></i> 谣言：
+                                </div>
+                                <p>"某数字货币将取代法定货币，现在投资可获百倍回报"</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="panel-row">
+                        <div class="character">
+                            <div class="character-avatar truth">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="character-name">真相</div>
+                        </div>
+                        <div class="dialogue truth">
+                            <div class="dialogue-content">
+                                <div class="dialogue-title truth">
+                                    <i class="fas fa-check-circle"></i> 真相：
+                                </div>
+                                <p>数字货币投资风险极高，多数所谓"百倍回报"项目实为骗局。法定货币地位由国家信用背书，短期内不会被取代。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="panel-row">
+                        <div class="character">
+                            <div class="character-avatar expert">
+                                <i class="fas fa-university"></i>
+                            </div>
+                            <div class="character-name">金融专家</div>
+                        </div>
+                        <div class="dialogue expert">
+                            <div class="dialogue-content">
+                                <div class="dialogue-title expert">
+                                    <i class="fas fa-lightbulb"></i> 专家提示：
+                                </div>
+                                <p>投资需谨慎，高回报必然伴随高风险。请通过正规金融机构进行理财，远离承诺"稳赚不赔"的投资项目。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 社会热点类谣言 -->
+            <section class="comic-scene animate delay-3">
+                <div class="scene-header">
+                    <div class="scene-icon">
+                        <i class="fas fa-newspaper"></i>
+                    </div>
+                    <h2 class="scene-title">社会热点类热门谣言</h2>
+                </div>
+                
+                <div class="comic-panel">
+                    <div class="panel-row">
+                        <div class="character">
+                            <div class="character-avatar rumor">
+                                <i class="fas fa-times"></i>
+                                <div class="hot-tag">热</div>
+                            </div>
+                            <div class="character-name">谣言</div>
+                        </div>
+                        <div class="dialogue rumor">
+                            <div class="dialogue-content">
+                                <div class="dialogue-title rumor">
+                                    <i class="fas fa-exclamation-triangle"></i> 谣言：
+                                </div>
+                                <p>"某地发生重大安全事故，政府隐瞒伤亡人数"</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="panel-row">
+                        <div class="character">
+                            <div class="character-avatar truth">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="character-name">真相</div>
+                        </div>
+                        <div class="dialogue truth">
+                            <div class="dialogue-content">
+                                <div class="dialogue-title truth">
+                                    <i class="fas fa-check-circle"></i> 真相：
+                                </div>
+                                <p>经核实，该消息为不实信息。我国有完善的事故报告和信息公开制度，重大事件会及时通过官方渠道向社会公布。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="panel-row">
+                        <div class="character">
+                            <div class="character-avatar expert">
+                                <i class="fas fa-user-shield"></i>
+                            </div>
+                            <div class="character-name">网信办</div>
+                        </div>
+                        <div class="dialogue expert">
+                            <div class="dialogue-content">
+                                <div class="dialogue-title expert">
+                                    <i class="fas fa-lightbulb"></i> 官方提示：
+                                </div>
+                                <p>请广大网民不造谣、不信谣、不传谣，从官方渠道获取权威信息。传播谣言可能承担法律责任。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 教育与升学类谣言 -->
+            <section class="comic-scene animate delay-1">
+                <div class="scene-header">
+                    <div class="scene-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h2 class="scene-title">教育与升学类热门谣言</h2>
+                </div>
+                
+                <div class="comic-panel">
+                    <div class="panel-row">
+                        <div class="character">
+                            <div class="character-avatar rumor">
+                                <i class="fas fa-times"></i>
+                                <div class="hot-tag">热</div>
+                            </div>
+                            <div class="character-name">谣言</div>
+                        </div>
+                        <div class="dialogue rumor">
+                            <div class="dialogue-content">
+                                <div class="dialogue-title rumor">
+                                    <i class="fas fa-exclamation-triangle"></i> 谣言：
+                                </div>
+                                <p>"教育部将取消中考/高考，全面实行素质教育免试入学"</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="panel-row">
+                        <div class="character">
+                            <div class="character-avatar truth">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="character-name">真相</div>
+                        </div>
+                        <div class="dialogue truth">
+                            <div class="dialogue-content">
+                                <div class="dialogue-title truth">
+                                    <i class="fas fa-check-circle"></i> 真相：
+                                </div>
+                                <p>中考、高考作为我国重要的教育选拔制度，目前没有取消的计划。教育改革是渐进过程，任何重大政策调整都会提前公布。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="panel-row">
+                        <div class="character">
+                            <div class="character-avatar expert">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div class="character-name">教育专家</div>
+                        </div>
+                        <div class="dialogue expert">
+                            <div class="dialogue-content">
+                                <div class="dialogue-title expert">
+                                    <i class="fas fa-lightbulb"></i> 专家提示：
+                                </div>
+                                <p>关注教育部官方网站和权威媒体获取准确教育政策信息。不要轻信所谓"内部消息"，避免影响正常学习和备考计划。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+            
+            <!-- 辟谣提示 -->
+            <section class="tips-section animate delay-2">
+                <h2 class="tips-title">识谣辟谣小贴士</h2>
+                
+                <div class="tips-grid">
+                    <div class="tip-card" onclick="switchTab('tips')">
+                        <div class="tip-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="tip-title">核实信息来源</div>
+                        <div class="tip-content">查看消息出处是否权威，避免轻信不明来源信息</div>
+                    </div>
+                    
+                    <div class="tip-card" onclick="switchTab('tips')">
+                        <div class="tip-icon">
+                            <i class="fas fa-exclamation-circle"></i>
+                        </div>
+                        <div class="tip-title">警惕夸张标题</div>
+                        <div class="tip-content">"震惊""速看""内部消息"等多为吸引眼球的不实信息</div>
+                    </div>
+                    
+                    <div class="tip-card" onclick="switchTab('tips')">
+                        <div class="tip-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="tip-title">学习科普知识</div>
+                        <div class="tip-content">掌握基本科学常识，提高对虚假信息的辨别能力</div>
+                    </div>
+                    
+                    <div class="tip-card" onclick="switchTab('tips')">
+                        <div class="tip-icon">
+                            <i class="fas fa-flag"></i>
+                        </div>
+                        <div class="tip-title">举报网络谣言</div>
+                        <div class="tip-content">发现谣言及时向平台或相关部门举报，共同维护清朗空间</div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 行动号召 -->
+            <section class="action-section animate delay-3">
+                <h2 class="action-title">加入辟谣行动，做网络清朗守护者</h2>
+                <p style="margin-bottom: 25px;">让我们共同行动起来，不信谣、不传谣、不造谣，共建清朗网络空间！</p>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="switchTab('action')">
+                        <i class="fas fa-hands-helping"></i> 参与辟谣志愿者
+                    </button>
+                    <button class="btn btn-secondary" onclick="switchTab('action')">
+                        <i class="fas fa-book"></i> 学习辟谣知识
+                    </button>
+                    <button class="btn btn-primary" onclick="switchTab('action')">
+                        <i class="fas fa-flag"></i> 举报网络谣言
+                    </button>
+                </div>
+            </section>
+        </div>
+        
+        <!-- 辟谣指南页面 -->
+        <div id="tips" class="content-section">
+            <div class="comic-scene">
+                <div class="scene-header">
+                    <div class="scene-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h2 class="scene-title">识谣辟谣完全指南</h2>
+                </div>
+                
+                <p>掌握正确的识谣辟谣方法，是每个网民应具备的基本网络素养。以下是详细的识谣辟谣指南：</p>
+                
+                <div class="guide-grid">
+                    <div class="guide-card">
+                        <h3><i class="fas fa-check-circle"></i> 核实信息来源</h3>
+                        <ul>
+                            <li>查看消息发布者是否为官方或权威机构</li>
+                            <li>检查消息是否有明确的出处和时间</li>
+                            <li>对比多个可信来源的信息是否一致</li>
+                            <li>警惕没有明确来源的"内部消息"</li>
+                            <li>使用搜索引擎验证信息的真实性</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="guide-card">
+                        <h3><i class="fas fa-exclamation-triangle"></i> 识别谣言特征</h3>
+                        <ul>
+                            <li>使用夸张、煽动性标题吸引点击</li>
+                            <li>内容缺乏具体时间、地点、人物信息</li>
+                            <li>要求"紧急转发""不转不是中国人"等</li>
+                            <li>图片、视频有明显编辑痕迹</li>
+                            <li>声称有"独家消息"或"内部资料"</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="guide-card">
+                        <h3><i class="fas fa-tools"></i> 实用辟谣工具</h3>
+                        <ul>
+                            <li>使用搜索引擎反向图片搜索验证图片真实性</li>
+                            <li>关注官方辟谣平台和权威媒体账号</li>
+                            <li>安装浏览器插件识别虚假信息</li>
+                            <li>使用专业事实核查网站验证信息</li>
+                            <li>利用社交媒体举报功能举报虚假信息</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="guide-card">
+                        <h3><i class="fas fa-graduation-cap"></i> 提升媒介素养</h3>
+                        <ul>
+                            <li>学习基本的科学知识和逻辑思维</li>
+                            <li>了解常见谣言类型和传播规律</li>
+                            <li>培养批判性思维，不盲目相信信息</li>
+                            <li>参与网络素养培训课程</li>
+                            <li>关注权威科普账号学习专业知识</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <button class="back-btn" onclick="switchTab('home')">
+                    <i class="fas fa-arrow-left"></i> 返回首页
+                </button>
+            </div>
+        </div>
+        
+        <!-- 辟谣行动页面 -->
+        <div id="action" class="content-section">
+            <div class="comic-scene">
+                <div class="scene-header">
+                    <div class="scene-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h2 class="scene-title">加入辟谣行动指南</h2>
+                </div>
+                
+                <p>每个人都可以成为网络清朗空间的守护者。以下是参与辟谣行动的具体方式：</p>
+                
+                <div class="guide-grid">
+                    <div class="guide-card">
+                        <h3><i class="fas fa-hands-helping"></i> 成为辟谣志愿者</h3>
+                        <ul>
+                            <li>加入官方辟谣志愿者团队</li>
+                            <li>参与线上线下辟谣宣传活动</li>
+                            <li>协助收集和核实网络谣言信息</li>
+                            <li>创作辟谣内容（文章、漫画、视频等）</li>
+                        </ul>
+                        <p><strong>报名方式：</strong>访问当地网信办官网或关注官方微信公众号</p>
+                    </div>
+                    
+                    <div class="guide-card">
+                        <h3><i class="fas fa-book"></i> 学习辟谣知识</h3>
+                        <ul>
+                            <li>参加网络素养培训课程</li>
+                            <li>关注权威辟谣平台学习最新知识</li>
+                            <li>阅读网络信息安全相关书籍</li>
+                            <li>参与辟谣知识竞赛和活动</li>
+                        </ul>
+                        <p><strong>推荐资源：</strong>中国互联网联合辟谣平台、各地网信办官网</p>
+                    </div>
+                    
+                    <div class="guide-card">
+                        <h3><i class="fas fa-flag"></i> 举报网络谣言</h3>
+                        <ul>
+                            <li>通过12377.cn网站举报</li>
+                            <li>使用各网络平台举报功能</li>
+                            <li>向当地网信部门举报</li>
+                            <li>通过官方举报电话12377</li>
+                        </ul>
+                        <p><strong>举报要求：</strong>提供谣言内容、来源链接、传播范围等信息</p>
+                    </div>
+                    
+                    <div class="guide-card">
+                        <h3><i class="fas fa-share-alt"></i> 传播辟谣信息</h3>
+                        <ul>
+                            <li>转发权威辟谣内容到社交平台</li>
+                            <li>在家庭群、朋友群中传播真相</li>
+                            <li>制作个性化的辟谣宣传材料</li>
+                            <li>参与辟谣话题讨论和互动</li>
+                        </ul>
+                        <p><strong>注意事项：</strong>确保传播内容来源权威、表述准确</p>
+                    </div>
+                </div>
+                
+                <div style="background: #e6f2ff; padding: 20px; border-radius: 15px; margin-top: 20px;">
+                    <h3 style="color: var(--primary); margin-bottom: 10px;"><i class="fas fa-award"></i> 辟谣行动奖励机制</h3>
+                    <p>为鼓励更多人参与辟谣行动，各地网信部门设立了多种奖励机制：</p>
+                    <ul>
+                        <li>优秀辟谣志愿者表彰</li>
+                        <li>辟谣作品创作奖励</li>
+                        <li>网络素养提升证书</li>
+                        <li>参与重大辟谣行动纪念</li>
+                    </ul>
+                </div>
+                
+                <button class="back-btn" onclick="switchTab('home')">
+                    <i class="fas fa-arrow-left"></i> 返回首页
+                </button>
+            </div>
+        </div>
+        
+        <!-- 页脚 -->
+        <footer>
+            <div class="footer-logo">
+                <div class="footer-logo-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <span>互联网辟谣宣传平台</span>
+            </div>
+            <p>凝聚辟谣力量 · 共护网络清朗</p>
+            <p>举报热线：12377 | 邮箱：jubao@12377.cn</p>
+            <p style="margin-top: 15px;">© 2023 陕西能源赵石畔矿业运营有限责任公司</p>
+        </footer>
+    </div>
+
+    <script>
+        // 切换标签页
+        function switchTab(tabId) {
+            // 隐藏所有内容区域
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // 移除所有标签的激活状态
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // 显示选中的内容区域
+            document.getElementById(tabId).classList.add('active');
+            
+            // 激活选中的标签
+            document.querySelector(`.nav-tab[data-target="${tabId}"]`).classList.add('active');
+            
+            // 滚动到顶部
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // 添加滚动动画效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.animate');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animatedElements.forEach(el => {
+                el.style.opacity = 0;
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+            
+            // 添加按钮交互效果
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px)';
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // 添加角色点击效果
+            const characters = document.querySelectorAll('.character-avatar');
+            characters.forEach(character => {
+                character.addEventListener('click', function() {
+                    this.style.transform = 'scale(1.1)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 300);
+                });
+            });
+            
+            // 添加导航标签点击事件
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const target = this.getAttribute('data-target');
+                    switchTab(target);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
